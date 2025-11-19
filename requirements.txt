@@ -1,0 +1,6 @@
+black
+python-dotenv
+mysql-connector-python
+python-dateutil
+boto3
+botocore

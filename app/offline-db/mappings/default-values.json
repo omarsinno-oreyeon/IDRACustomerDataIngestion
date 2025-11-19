@@ -1,0 +1,12 @@
+{
+    "fodModelClassificationInferenceTime": 0,
+    "fodModelClassificationID": 1,
+    "phoneToGroundDistInCm": 0,
+    "locationLongitude": 0,
+    "locationLatitude": 0,
+    "numberOfRetries": 0,
+    "bbx": 0,
+    "bby": 0,
+    "bbh": 0,
+    "bbw": 0
+}

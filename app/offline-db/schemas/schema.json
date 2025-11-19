@@ -1,0 +1,342 @@
+{
+  "runsIdra": [
+    {
+      "name": "ID",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": null,
+      "primary_key": true
+    },
+    {
+      "name": "reportType",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "source",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "'IDRA'",
+      "primary_key": false
+    },
+    {
+      "name": "airbaseName",
+      "type": "VARCHAR(1000)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "unit",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "reportUsername",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "reviewerUsername",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "approverUsername",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "nbreOfOfficers",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "snco",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "enlisted",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "other",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": "0",
+      "primary_key": false
+    },
+    {
+      "name": "totalHeadCount",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": "0",
+      "primary_key": false
+    },
+    {
+      "name": "fodCount",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": "0",
+      "primary_key": false
+    },
+    {
+      "name": "startTime",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "endTime",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "startTimeJulian",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "endTimeJulian",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "reportDuration",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "'00:00:00'",
+      "primary_key": false
+    }
+  ],
+  "fodDataIdra": [
+    {
+      "name": "ID",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": null,
+      "primary_key": true
+    },
+    {
+      "name": "UUID",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "runID",
+      "type": "INTEGER",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "fodImage",
+      "type": "BLOB",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "createdTime",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "createdTimeJulian",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "approved",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "'false'",
+      "primary_key": false
+    },
+    {
+      "name": "rejectionReason",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "imageName",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "latitude",
+      "type": "VARCHAR(1000)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "longitude",
+      "type": "VARCHAR(1000)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "initialLatitude",
+      "type": "VARCHAR(1000)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "initialLongitude",
+      "type": "VARCHAR(1000)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "size",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "prediction",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "type",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "color",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "material",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "isEdited",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "'true'",
+      "primary_key": false
+    },
+    {
+      "name": "isClassified",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "'false'",
+      "primary_key": false
+    },
+    {
+      "name": "comment",
+      "type": "VARCHAR(1000)",
+      "not_null": false,
+      "default": null,
+      "primary_key": false
+    },
+    {
+      "name": "modelPrediction",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "modelType",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "modelMaterial",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "modelSize",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "modelColor",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "topPrediction1",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "topPrediction2",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    },
+    {
+      "name": "topPrediction3",
+      "type": "VARCHAR(100)",
+      "not_null": false,
+      "default": "''",
+      "primary_key": false
+    }
+  ]
+}

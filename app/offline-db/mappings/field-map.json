@@ -1,0 +1,14 @@
+{
+    "prediction": "fodModelClassificationFinal",
+    "longitude": "locationLongitude",
+    "latitude": "locationLatitude",
+    "modelMaterial": "material",
+    "material": "finalMaterial",
+    "type": "finalSource",
+    "modelType": "source",
+    "modelColor": "color",
+    "color": "finalColor",
+    "modelSize": "size",
+    "size": "finalSize",
+    "comment": "Comment"
+}
