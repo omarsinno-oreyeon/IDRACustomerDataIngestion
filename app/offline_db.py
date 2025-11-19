@@ -171,7 +171,6 @@ if __name__ == "__main__":
     # Save information of the offline database locally
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True, help="Run number from offline db", type=int)
-    parser.add_argument("--user-id", required=True, default=333, help="User ID set up for Nerva", type=int)
 
     args = parser.parse_args()
 

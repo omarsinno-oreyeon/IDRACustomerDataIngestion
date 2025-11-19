@@ -236,7 +236,7 @@ def ingest_to_db(field_mapping_path: str, default_values_path: str, run_id: int,
         record["fodImageName"] = image_name
 
         # Set FOD Image URI
-        record["fodImageUri"] = f"{bucket}/{prefix}/{image_name}"
+        record["fodImageUri"] = f"{bucket_name}/{prefix}/{image_name}"
 
         # Create a map that maps FOD ID from offline DB to online DB
         record["fodID"] = item["ID"]
@@ -344,12 +344,12 @@ def ingest_to_db(field_mapping_path: str, default_values_path: str, run_id: int,
 
 if __name__ == "__main__":
     # Run IDRA Data ingestion process
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--run-id", required=True, help="Run number from offline db", type=int)
-    parser.add_argument("--bucket-name", required=True, default="idra-commercial", help="Bucket name", type=str)
-    parser.add_argument("--user-id", required=True, default=333, help="User ID set up for Nerva", type=int)
+    argument_parser = argparse.ArgumentParser()
+    argument_parser.add_argument("--run-id", required=True, help="Run number from offline db", type=int)
+    argument_parser.add_argument("--bucket-name", required=True, default="idra-commercial", help="Bucket name", type=str)
+    argument_parser.add_argument("--user-id", required=True, default=333, help="User ID set up for Nerva", type=int)
 
-    args = parser.parse_args()
+    args = argument_parser.parse_args()
 
     # Unpack args
     bucket_name = args.bucket_name
@@ -359,23 +359,25 @@ if __name__ == "__main__":
     data_path = f"app/images/run_{run_id}/"
     prefix = f"FOD Images/"
 
+    # If already ingested to S3, skip pushing data to S3
     try:
-        response = s3_client.list_objects_v2(
-            Bucket=bucket_name,
-            Prefix=prefix,
-            MaxKeys=1 # Restrict to a single key for efficiency
-        )
+        listed_images = os.listdir(data_path)
+
+        image_key = f"{prefix}{listed_images[0]}"
+        s3_client.head_object(Bucket=bucket_name, Key=image_key)
+
+        logger.info(f"Data is already available in {bucket_name}, {image_key}")
 
     except ClientError as ce:
-        logger.error(f"Error listing objects in Bucket: {bucket} Prefix {prefix}")
+        logger.info(f"Object not in URI {bucket_name}{prefix}")
+
+        ingest_to_s3(data_path, bucket_name, prefix)
 
         raise ce
 
-    # If already ingested to S3, skip pushing data to S3
-    if response.get("KeyCount", 0) == 0:
-        ingest_to_s3(data_path, bucket_name, prefix)
-    else:
-        logger.info(f"Data is already available in {bucket_name}, {prefix}")
+    except Exception as e:
+        logger.error(f"Error looking up image in Bucket: {bucket_name} Prefix {prefix}")
+        raise e
 
     # If data already in db, skip pushing data to db
     # Push metadata to database
