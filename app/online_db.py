@@ -10,12 +10,12 @@ import json
 import glob
 import os
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
 
-handler = logging.StreamHandler()
-handler.setLevel(logging.INFO)
-logger.addHandler(handler)
+logger = logging.getLogger()
+logger.setLevel("INFO")
 
 # Third party libraries
 import dotenv

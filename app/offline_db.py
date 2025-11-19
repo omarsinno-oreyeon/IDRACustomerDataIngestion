@@ -15,13 +15,14 @@ import json
 import csv
 import os
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+import argparse
 
-handler = logging.StreamHandler()
-handler.setLevel(logging.INFO)
-logger.addHandler(handler)
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
 
+logger = logging.getLogger()
+logger.setLevel("INFO")
 
 def load_sqlite_db(db_path: str) -> sqlite3.Connection:
     """
@@ -167,6 +168,16 @@ def export_blobs(conn: sqlite3.Connection, run_id: int) -> None:
 
 
 if __name__ == "__main__":
+    # Save information of the offline database locally
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--run-id", required=True, help="Run number from offline db", type=int)
+    parser.add_argument("--user-id", required=True, default=333, help="User ID set up for Nerva", type=int)
+
+    args = parser.parse_args()
+
+    # Unpack args
+    run_id = args.run_id
+
     # Avoid hardcoding the database path
     db_path = list(glob.glob("**/*.sqlite", recursive=True))[0]
 
@@ -200,7 +211,6 @@ if __name__ == "__main__":
         logger.info(f"Run ID: {run[0]}, Number of images: {run[1]}")
 
     # Export BLOB images from the database
-    run_id = 173  # Example run ID
     export_blobs(db_conn, run_id)
 
     # Export data as CSV
