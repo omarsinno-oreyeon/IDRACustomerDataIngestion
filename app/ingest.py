@@ -236,7 +236,7 @@ def ingest_to_db(field_mapping_path: str, default_values_path: str, run_id: int,
         record["fodImageName"] = image_name
 
         # Set FOD Image URI
-        record["fodImageUri"] = f"{bucket_name}/{prefix}/{image_name}"
+        record["fodImageUri"] = f"{bucket_name}/{prefix}{image_name}"
 
         # Create a map that maps FOD ID from offline DB to online DB
         record["fodID"] = item["ID"]
@@ -369,11 +369,9 @@ if __name__ == "__main__":
         logger.info(f"Data is already available in {bucket_name}, {image_key}")
 
     except ClientError as ce:
-        logger.info(f"Object not in URI {bucket_name}{prefix}")
+        logger.error(f"Object not in URI {bucket_name}/{prefix}")
 
         ingest_to_s3(data_path, bucket_name, prefix)
-
-        raise ce
 
     except Exception as e:
         logger.error(f"Error looking up image in Bucket: {bucket_name} Prefix {prefix}")

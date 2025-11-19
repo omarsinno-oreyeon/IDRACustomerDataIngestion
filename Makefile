@@ -16,3 +16,7 @@ db-ingest:
 ingest-data:
 	python app/offline_db.py --run-id $(RUNID)
 	python app/ingest.py --run-id $(RUNID) --user-id $(USERID) --bucket-name $(BUCKET)
+
+process:
+	chmod +x process.sh
+	bash process.sh
